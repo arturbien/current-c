@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import FullScreen from "./hoc/fullScreen/fullScreen";
 import Navigation from "./components/Navigation/Navigation";
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./containers/Dashboard/Dashboard";
+import CoinDetails from "./containers/CoinDetails/CoinDetails";
 
 class App extends Component {
   render() {
@@ -16,6 +16,7 @@ class App extends Component {
             <Layout>
               <Navigation />
               <Route path="/" exact component={Dashboard} />
+              <Route path="/coin/:id" exact component={CoinDetails} />
               <Route
                 path="/settings"
                 exact

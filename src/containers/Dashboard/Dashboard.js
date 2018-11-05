@@ -3,6 +3,7 @@ import "./Dashboard.css";
 
 import Container from "../../hoc/container/container";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Heading from "../../components/UI/Heading/Heading";
 import Coins from "../../components/Coins/Coins";
 
 import axios from "../../axios";
@@ -56,7 +57,7 @@ class Dashboard extends Component {
     return (
       <main className="Dashboard">
         <Container>
-          {this.state.loading ? <Spinner /> : <h1>Dashboard</h1>}
+          {this.state.loading ? <Spinner /> : <Heading>Dashboard</Heading>}
           {coins}
         </Container>
       </main>

@@ -1,0 +1,23 @@
+.Chart {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(40vh - 64px);
+  /* background: rgba(0,0,0,0.2); */
+  transform: scaleY(-1);
+}
+
+.Chart-svg {
+  position: absolute;
+  top: 0;
+  overflow: visible;
+}
+.Chart-svg--blur {
+  filter: blur(7px);
+}
+.Chart-svg__path {
+  position: absolute;
+  top: 0;
+}

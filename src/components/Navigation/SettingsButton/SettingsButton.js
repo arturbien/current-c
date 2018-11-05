@@ -7,7 +7,6 @@ const SettingsButton = () => (
       viewBox="0 0 64 64"
       width="28px"
       height="28px"
-      class="data-ex-icons-settings "
       style={{ fill: "currentcolor" }}
     >
       <g transform="translate(0,6) scale(1,1)">

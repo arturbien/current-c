@@ -4,7 +4,7 @@ import "./Layout.css";
 const Layout = props => {
   return (
     <>
-      <main className="Main">{props.children}</main>
+      <div className="Layout">{props.children}</div>
     </>
   );
 };
