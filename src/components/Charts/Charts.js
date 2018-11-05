@@ -5,23 +5,28 @@ import Chart from "./Chart/Chart";
 import DifferenceChart from "./DifferenceChart/DifferenceChart";
 
 const chartStyles = {
-  TP: {
-    stroke: "#000",
-    fill: "none",
-    strokeWidth: "1",
-    blur: "7px"
-  },
   HIGH: {
     stroke: "#5cab7d",
     fill: "none",
     strokeDasharray: "8,16",
     strokeWidth: "2"
   },
+
   LOW: {
     stroke: "#ED254E",
     fill: "none",
     strokeDasharray: "8,16",
     strokeWidth: "2"
+  },
+  DIFF: {
+    strokeWidth: "8px",
+    stroke: "#6a7485"
+  },
+  TP: {
+    stroke: "#fff",
+    fill: "none",
+    strokeWidth: "1",
+    blur: "7px"
   }
 };
 
@@ -32,31 +37,34 @@ const Charts = props => {
   let charts = [];
   Object.keys(props.activeCharts)
     .filter(type => props.activeCharts[type])
-    .forEach(type => {
+    .forEach((type, i) => {
       switch (type) {
         case "DIFF":
           charts.push(
             <DifferenceChart
+              key={i}
               min={MIN}
               max={MAX}
               dataLow={props.data.LOW}
               dataHigh={props.data.HIGH}
+              {...chartStyles[type]}
             />
           );
           break;
         default:
           charts.push(
             <Chart
-              {...chartStyles[type]}
+              key={i}
               min={MIN}
               max={MAX}
               data={props.data[type]}
+              {...chartStyles[type]}
             />
           );
       }
     });
 
-  return charts;
+  return <section className="Charts">{charts}</section>;
   // return (
   //   <Chart {...chartStyles.HIGH} min={MIN} max={MAX} data={props.data.HIGH} />
   // );

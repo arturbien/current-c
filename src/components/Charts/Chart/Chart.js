@@ -7,12 +7,11 @@ const Chart = props => {
     const scale = 100 / (max - min);
     const points = data.length - 1;
     const offset = 100 / points;
-    let d = "M0 0";
+    let d = "";
     data.forEach((val, i) => {
-      d += `L${(offset * i).toFixed(2)}${" " +
+      d += `${i === 0 ? "M" : "L"}${(offset * i).toFixed(2)}${" " +
         ((val - min) * scale).toFixed(2)}`;
     });
-    d += " L100 0";
     return d;
   };
   return (

@@ -17,8 +17,8 @@ class CoinDetails extends Component {
   state = {
     data: null,
     activeCharts: {
-      LOW: true,
-      HIGH: true,
+      LOW: false,
+      HIGH: false,
       TP: true,
       DIFF: true
     },
@@ -27,21 +27,36 @@ class CoinDetails extends Component {
   componentDidMount() {
     this.fetchCoinHistory();
   }
-  fetchCoinHistory = async () => {
+  fetchCoinHistory = async days => {
     const coinId = this.props.match.params.id;
+
     let historyData = await axios.get(
-      `/data/histoday?fsym=${coinId}&tsym=USD&limit=31`
+      `/data/histoday?fsym=${coinId}&tsym=USD&limit=365`
     );
     historyData = historyData.data.Data;
-
     let data = {};
     data.TP = getTypicalPrice(historyData);
     data.HIGH = getPrice(historyData, "high");
     data.LOW = getPrice(historyData, "low");
 
+    let info = await axios.get(
+      `/data/pricemultifull?fsyms=${coinId}&tsyms=USD`
+    );
+    info = info.data;
+    let today = {
+      high: info.RAW[coinId].USD.HIGH24HOUR,
+      low: info.RAW[coinId].USD.LOW24HOUR,
+      volume: info.RAW[coinId].USD.LOW24HOUR,
+      change: {
+        pct: info.RAW[coinId].USD.CHANGEPCT24HOUR,
+        val: info.RAW[coinId].USD.CHANGE24HOUR
+      }
+    };
+    console.log(info);
+
     this.setState({ data, loading: false });
-    console.log(data);
   };
+
   render() {
     console.log(this.props);
     return (
@@ -51,11 +66,6 @@ class CoinDetails extends Component {
             {this.state.loading ? (
               <Spinner />
             ) : (
-              // <Chart
-              //   {...chartStyles.HIGH}
-              //   minmax={this.state.data.minmax}
-              //   data={this.state.data.HIGH}
-              // />
               <Charts
                 activeCharts={this.state.activeCharts}
                 data={this.state.data}
