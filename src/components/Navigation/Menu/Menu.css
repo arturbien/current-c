@@ -1,0 +1,23 @@
+.Menu {
+  height: 100%;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.Menu li {
+  display: inline-block;
+  margin-left: 14px;
+}
+
+.Menu li a {
+  display: inline-block;
+  height: 64px;
+  line-height: 64px;
+  font-weight: 300;
+  color: #fff;
+  padding: 0 14px;
+}
+.Menu li a.active,
+.Menu li a:hover {
+  border-bottom: 2px solid #fff;
+}
