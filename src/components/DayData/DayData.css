@@ -1,0 +1,21 @@
+.DayData {
+  width: 100%;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.DayData-data {
+  width: 33%;
+  margin-bottom: 14px;
+}
+
+.DayData-data__label {
+  font-size: 0.7em;
+  color: #6a7485;
+  font-weight: bold;
+  margin-bottom: 4px;
+}

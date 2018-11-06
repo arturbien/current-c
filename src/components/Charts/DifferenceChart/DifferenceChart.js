@@ -23,7 +23,6 @@ function hexToRGB(hex, alpha) {
 }
 
 const DifferenceChart = props => {
-  console.log(props);
   const getChartDefinition = () => {
     const { min, max, dataLow, dataHigh } = props;
     const scale = 100 / (max - min);

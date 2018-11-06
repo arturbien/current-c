@@ -3,7 +3,8 @@ import "./Coins.css";
 import { NavLink } from "react-router-dom";
 
 import Coin from "./Coin/Coin";
-import Divider from "../UI/Divider/Divider";
+import Divider from "../../UI/Divider/Divider";
+
 const Coins = props => {
   const coins = Object.keys(props.coins).map(c => {
     const coin = props.coins[c];

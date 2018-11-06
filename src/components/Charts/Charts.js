@@ -65,9 +65,6 @@ const Charts = props => {
     });
 
   return <section className="Charts">{charts}</section>;
-  // return (
-  //   <Chart {...chartStyles.HIGH} min={MIN} max={MAX} data={props.data.HIGH} />
-  // );
 };
 
 export default Charts;
