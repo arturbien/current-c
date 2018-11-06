@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Navigation from "./components/Navigation/Navigation";
+import MainNav from "./components/Navigation/MainNav/MainNav";
+import CoinNav from "./components/Navigation/CoinNav/CoinNav";
+
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Spinner from "./components/UI/Spinner/Spinner";
@@ -56,7 +58,16 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Layout>
-            <Navigation />
+            <Switch>
+              <Route exact path="/" component={MainNav} />
+              <Route exact path="/blog" component={MainNav} />
+              <Route
+                path="/coin/:id"
+                render={props => (
+                  <CoinNav {...props} coins={this.state.coins} />
+                )}
+              />
+            </Switch>
             {this.state.loading ? (
               <Spinner />
             ) : (

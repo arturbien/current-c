@@ -1,19 +1,38 @@
 .DayData {
   width: 100%;
-  padding: 20px 0;
-  position: absolute;
+  /* padding: 20px 0; */
+  height: 50%;
   bottom: 0;
+
+  position: absolute;
+  padding-left: inherit;
+  padding-right: inherit;
+  left: 0;
+  right: 0;
+  padding-bottom: 16px;
+}
+.DayData-container {
+  width: 100%;
+  position: absolute;
+  padding-left: inherit;
+  padding-right: inherit;
+  padding-bottom: inherit;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.DayData-data {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-.DayData-data {
+.DayData-item {
   width: 33%;
   margin-bottom: 14px;
 }
 
-.DayData-data__label {
+.DayData-item__label {
   font-size: 0.7em;
   color: #6a7485;
   font-weight: bold;

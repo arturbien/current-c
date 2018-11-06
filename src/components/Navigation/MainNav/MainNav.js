@@ -1,17 +1,16 @@
 import React from "react";
-import "./Navigation.css";
 
-import Container from "../../hoc/container/container";
+import Container from "../../../hoc/container/container";
 import Menu from "./Menu/Menu";
 import SettingsButton from "./SettingsButton/SettingsButton";
-
-const Navigation = props => (
-  <nav className="Navigation">
+import NavBar from "../../UI/NavBar/NavBar";
+const MainNav = props => (
+  <NavBar>
     <Container>
       <SettingsButton />
       <Menu />
     </Container>
-  </nav>
+  </NavBar>
 );
 
-export default Navigation;
+export default MainNav;

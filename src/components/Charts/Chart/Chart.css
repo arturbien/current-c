@@ -5,7 +5,6 @@
   right: 0;
   width: 100%;
   height: calc(40vh - 64px);
-  /* background: rgba(0,0,0,0.2); */
   transform: scaleY(-1);
 }
 

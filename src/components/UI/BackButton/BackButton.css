@@ -1,0 +1,11 @@
+.BackButton {
+  display: flex;
+  align-items: center;
+}
+
+.BackButton__text {
+  margin-left: 12px;
+  font-size: 2em;
+  font-weight: 100;
+  line-height: 64px;
+}
