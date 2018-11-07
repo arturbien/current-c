@@ -1,7 +1,8 @@
 import React from "react";
 import "./DayData.css";
 
-import Divider from "..//UI/Divider/Divider";
+import Divider from "../UI/Divider/Divider";
+import Heading from "../UI/Heading/Heading";
 
 const DayData = ({ data }) => {
   console.log(data);
@@ -17,6 +18,7 @@ const DayData = ({ data }) => {
     <>
       <section className="DayData">
         <div className="DayData-container">
+          <Heading>$ {price.toFixed(2)}</Heading>
           <Divider />
           <div className="DayData-data">
             <div className="DayData-item">

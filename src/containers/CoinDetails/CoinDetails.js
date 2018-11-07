@@ -4,6 +4,7 @@ import "./CoinDetails.css";
 import FullScreen from "../../hoc/fullScreen/fullScreen";
 import Container from "../../hoc/container/container";
 import Charts from "../../components/Charts/Charts";
+import ChartsNav from "../../components/Charts/ChartsNav/ChartsNav";
 import DayData from "../../components/DayData/DayData";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from "../../axios";
@@ -39,12 +40,21 @@ class CoinDetails extends Component {
 
     this.setState({ data, loading: false });
   };
-
+  toggleChart = type => {
+    const { activeCharts } = this.state;
+    activeCharts[type] = !activeCharts[type];
+    this.setState({ activeCharts });
+  };
   render() {
     return (
       <FullScreen>
         <main className="CoinDetails">
           <Container>
+            <ChartsNav
+              activeCharts={this.state.activeCharts}
+              toggleChart={this.toggleChart}
+            />
+
             {this.state.loading ? (
               <Spinner />
             ) : (

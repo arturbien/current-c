@@ -3,7 +3,7 @@ import React from "react";
 import "./Charts.css";
 import Chart from "./Chart/Chart";
 import DifferenceChart from "./DifferenceChart/DifferenceChart";
-import Container from "../../hoc/container/container";
+import ChartsNav from "./ChartsNav/ChartsNav";
 const chartStyles = {
   HIGH: {
     stroke: "#5cab7d",
@@ -65,9 +65,10 @@ const Charts = props => {
     });
 
   return (
-    <section className="Charts">
-      <Container>{charts}</Container>
-    </section>
+    <>
+      {/* <ChartsNav activeCharts={props.activeCharts} toggle={props.toggle} /> */}
+      <section className="Charts">{charts}</section>
+    </>
   );
 };
 

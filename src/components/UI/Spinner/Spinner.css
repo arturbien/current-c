@@ -1,6 +1,7 @@
 .Spinner {
   display: inline-block;
-  position: absolute;
+  position: fixed;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%) scale(0.5);
   width: 64px;

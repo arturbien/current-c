@@ -6,10 +6,8 @@ import SettingsButton from "./SettingsButton/SettingsButton";
 import NavBar from "../../UI/NavBar/NavBar";
 const MainNav = props => (
   <NavBar>
-    <Container>
-      <SettingsButton />
-      <Menu />
-    </Container>
+    <SettingsButton />
+    <Menu />
   </NavBar>
 );
 

@@ -1,0 +1,21 @@
+.Charts-nav {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 28px;
+  display: flex;
+  background: #000;
+  justify-content: space-between;
+}
+.Charts-nav__button {
+  font-size: 0.8em;
+  flex: 1;
+  color: #6a7485;
+}
+
+.Charts-nav__button--active {
+  color: #fff;
+  text-shadow: -8px 0 12px #fff, 8px 0 12px #fff;
+}
