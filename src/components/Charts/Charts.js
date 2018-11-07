@@ -3,7 +3,7 @@ import React from "react";
 import "./Charts.css";
 import Chart from "./Chart/Chart";
 import DifferenceChart from "./DifferenceChart/DifferenceChart";
-import ChartsNav from "./ChartsNav/ChartsNav";
+
 const chartStyles = {
   HIGH: {
     stroke: "#5cab7d",

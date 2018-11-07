@@ -12,9 +12,9 @@ const Coin = props => {
       </div>
       <div className="Coin__name">{name}</div>
       <div className="Coin-stats">
-        <div className="Coin-stats__price">{`$ ${price.toFixed(2)}`}</div>
+        <div className="Coin-stats__price">{price}</div>
         <div className={["Coin-stats__change", changeDropClass].join(" ")}>
-          {change > 0 ? "+" + change.toFixed(2) : change.toFixed(2)}
+          {change > 0 ? "+" + change : change}
         </div>
       </div>
     </div>

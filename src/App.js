@@ -44,7 +44,7 @@ class App extends Component {
         coins[coin] = {};
         coins[coin].name = coinsList[coin].CoinName;
         coins[coin].symbol = coinsPrices.DISPLAY[coin].USD.FROMSYMBOL;
-        coins[coin].data = coinsPrices.RAW[coin].USD;
+        coins[coin].data = coinsPrices.DISPLAY[coin].USD;
         coins[coin].id = coin;
       });
       this.setState({ coins, loading: false });
@@ -54,6 +54,8 @@ class App extends Component {
     }
   };
   render() {
+    console.log(this.state);
+
     return (
       <BrowserRouter>
         <div className="App">
