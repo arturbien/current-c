@@ -1,7 +1,7 @@
 import React from "react";
 import "./Spinner.css";
 
-const Spinner = props => (
+const Spinner = () => (
   <div className="Spinner">
     <div />
     <div />

@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react";
 
 import "./Charts.css";
@@ -30,7 +32,21 @@ const chartStyles = {
   }
 };
 
-const Charts = props => {
+type Props = {
+  data: {
+    LOW: Array<number>,
+    HIGH: Array<number>,
+    TP: Array<number>
+  },
+  activeCharts: {
+    LOW: boolean,
+    HIGH: boolean,
+    TP: boolean,
+    DIFF: boolean
+  }
+};
+
+const Charts = (props: Props) => {
   //MIN / MAX is required in order for price charts to be scaled proportionally
   const MIN = Math.min(...props.data.LOW);
   const MAX = Math.max(...props.data.HIGH);

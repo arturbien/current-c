@@ -1,9 +1,15 @@
-import React from "react";
+// @flow
+import * as React from "react";
 import "./BackButton.css";
-
+// $FlowFixMe
 import { NavLink } from "react-router-dom";
 
-const BackButton = props => (
+type Props = {
+  to: string,
+  children?: React$Element<any> | string | null
+};
+
+const BackButton = (props: Props) => (
   <NavLink exact to={props.to}>
     <div className="BackButton">
       <svg

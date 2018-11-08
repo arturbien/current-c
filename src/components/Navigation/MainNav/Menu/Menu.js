@@ -3,7 +3,7 @@ import "./Menu.css";
 
 import { NavLink } from "react-router-dom";
 
-const Menu = props => (
+const Menu = () => (
   <ul className="Menu">
     <li>
       <NavLink exact to="/">

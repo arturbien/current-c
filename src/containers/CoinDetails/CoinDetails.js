@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+// @flow
+
+import * as React from "react";
 import "./CoinDetails.css";
 
 import FullScreen from "../../hoc/fullScreen/fullScreen";
@@ -11,8 +13,39 @@ import axios from "../../axios";
 
 import { getTypicalPrice, getPrice } from "../../functions";
 
-// hourly https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24
-class CoinDetails extends Component {
+type Props = {
+  coins: {
+    [key: string]: {
+      data: {
+        HIGH24HOUR: string,
+        LOW24HOUR: string,
+        PRICE: string,
+        OPEN24HOUR: string,
+        TOTALVOLUME24H: string,
+        CHANGE24HOUR: number
+      }
+    }
+  },
+  match: {
+    params: {
+      id: string
+    }
+  }
+};
+// Flow throws some errors when checking for Object type in state.data, hence the ugly "any"
+
+type State = {
+  data: any,
+  activeCharts: {
+    LOW: boolean,
+    HIGH: boolean,
+    TP: boolean,
+    DIFF: boolean
+  },
+  loading: boolean
+};
+
+class CoinDetails extends React.Component<Props, State> {
   state = {
     data: null,
     activeCharts: {
@@ -23,10 +56,11 @@ class CoinDetails extends Component {
     },
     loading: true
   };
+
   componentDidMount() {
     this.fetchCoinHistory();
   }
-  fetchCoinHistory = async days => {
+  fetchCoinHistory = async () => {
     const coinId = this.props.match.params.id;
 
     let historyData = await axios.get(
@@ -40,7 +74,7 @@ class CoinDetails extends Component {
 
     this.setState({ data, loading: false });
   };
-  toggleChart = type => {
+  toggleChart = (type: "LOW" | "HIGH" | "DIFF" | "TP") => {
     const { activeCharts } = this.state;
     activeCharts[type] = !activeCharts[type];
     this.setState({ activeCharts });

@@ -1,7 +1,16 @@
+// @flow
+
 import React from "react";
 import "./Coin.css";
 
-const Coin = props => {
+type Props = {
+  name: string,
+  symbol: string,
+  price: string,
+  change: number
+};
+
+const Coin = (props: Props) => {
   const { name, symbol, price, change } = props;
   const changeDropClass = change < 0 ? "Coin-stats__change--drop" : "";
 

@@ -1,7 +1,13 @@
-import React from "react";
+// @flow
+
+import * as React from "react";
 import "./Layout.css";
 
-const Layout = props => {
+type Props = {
+  children: React$Element<any>
+};
+
+const Layout = (props: Props) => {
   return (
     <>
       <div className="Layout">{props.children}</div>

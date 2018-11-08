@@ -1,9 +1,32 @@
+// @flow
+
 import React from "react";
 import "./Chart.css";
 
-const Chart = props => {
+type Props = {
+  min: number,
+  max: number,
+  data: Array<number>,
+  strokeWidth: string,
+  fill: string,
+  stroke: string,
+  blur?: string,
+  strokeDasharray?: string
+};
+
+const Chart = (props: Props) => {
+  const {
+    min,
+    max,
+    data,
+    blur,
+    strokeDasharray,
+    strokeWidth,
+    fill,
+    stroke
+  } = props;
+
   const getPathDefinition = () => {
-    const { min, max, data } = props;
     const scale = 100 / (max - min);
     const points = data.length - 1;
     const offset = 100 / points;
@@ -16,10 +39,10 @@ const Chart = props => {
   };
   return (
     <figure className="Chart">
-      {props.blur && (
+      {blur && (
         <svg
           className="Chart-svg"
-          style={{ filter: `blur(${props.blur})` }}
+          style={{ filter: `blur(${blur})` }}
           width="100%"
           height="100%"
           viewBox="0 0 100 100"
@@ -30,8 +53,8 @@ const Chart = props => {
             d={getPathDefinition()}
             strokeLinecap="round"
             strokeWidth="4"
-            stroke={props.stroke || "#000"}
-            strokeDasharray={props.strokeDasharray || "0"}
+            stroke={stroke || "#000"}
+            strokeDasharray={strokeDasharray || "0"}
             preserveAspectRatio="none"
             vectorEffect="non-scaling-stroke"
             fill="none"
@@ -49,15 +72,16 @@ const Chart = props => {
           className="Chart-svg__path"
           d={getPathDefinition()}
           strokeLinecap="round"
-          strokeWidth={props.strokeWidth || "1"}
-          stroke={props.stroke || "#000"}
-          strokeDasharray={props.strokeDasharray || "0"}
+          strokeWidth={strokeWidth || "1"}
+          stroke={stroke || "#000"}
+          strokeDasharray={strokeDasharray || "0"}
           preserveAspectRatio="none"
           vectorEffect="non-scaling-stroke"
-          fill={props.fill || "#fff"}
+          fill={fill || "#fff"}
         />
       </svg>
     </figure>
   );
 };
+
 export default Chart;

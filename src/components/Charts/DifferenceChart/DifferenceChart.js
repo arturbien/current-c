@@ -1,19 +1,21 @@
+// @flow
+
 import React from "react";
 import "./DifferenceChart.css";
 
-function hexToRGB(hex, alpha) {
-  hex = hex.split("");
-  const x = hex.length === 4 ? 1 : 2;
-  const bHex = hex
-    .splice(hex.length - x, x)
+function hexToRGB(hex: string, alpha: number): string {
+  const hexArray = hex.split("");
+  const x = hexArray.length === 4 ? 1 : 2;
+  const bHex = hexArray
+    .splice(hexArray.length - x, x)
     .join("")
     .repeat(3 - x);
-  const gHex = hex
-    .splice(hex.length - x, x)
+  const gHex = hexArray
+    .splice(hexArray.length - x, x)
     .join("")
     .repeat(3 - x);
-  const rHex = hex
-    .splice(hex.length - x, x)
+  const rHex = hexArray
+    .splice(hexArray.length - x, x)
     .join("")
     .repeat(3 - x);
   const r = parseInt(rHex, 16);
@@ -22,41 +24,48 @@ function hexToRGB(hex, alpha) {
   return `rgba(${r},${g},${b}${alpha ? "," + alpha : ""})`;
 }
 
-const DifferenceChart = props => {
+type Props = {
+  min: number,
+  max: number,
+  dataLow: Array<number>,
+  dataHigh: Array<number>,
+  strokeWidth: string,
+  stroke: string
+};
+
+const DifferenceChart = (props: Props) => {
+  const { min, max, dataLow, dataHigh, strokeWidth, stroke } = props;
+
   const getChartDefinition = () => {
-    const { min, max, dataLow, dataHigh } = props;
     const scale = 100 / (max - min);
     const days = dataLow.length - 1;
     const offset = 100 / days;
+
     let maxDifference = 0;
     dataLow.forEach((val, i) => {
       let difference = dataHigh[i] - val;
       maxDifference = difference > maxDifference ? difference : maxDifference;
     });
+
     let paths = [];
 
-    const pathStyles = {
-      strokeWidth: props.strokeWidth,
-      stroke: props.stroke
-    };
     dataLow.forEach((val, i) => {
-      let d = `M${(offset * i).toFixed(2)},${((val - min) * scale).toFixed(
+      const d = `M${(offset * i).toFixed(2)},${((val - min) * scale).toFixed(
         2
       )}L${(offset * i).toFixed(2)},${((dataHigh[i] - min) * scale).toFixed(
         2
       )}`;
-      pathStyles.d = d;
-      pathStyles.stroke = hexToRGB(
-        props.stroke,
-        (dataHigh[i] - val) / maxDifference
-      );
-      let path = (
+      const color = hexToRGB(stroke, (dataHigh[i] - val) / maxDifference);
+
+      const path = (
         <path
           key={i}
+          className="difference-chart-svg__path"
           preserveAspectRatio="none"
           vectorEffect="non-scaling-stroke"
-          {...pathStyles}
-          className="difference-chart-svg__path"
+          d={d}
+          stroke={color}
+          strokeWidth={strokeWidth}
         />
       );
       paths.push(path);
@@ -66,8 +75,8 @@ const DifferenceChart = props => {
 
   return (
     <figure className="difference-chart">
-      {props.dataLow &&
-        props.dataHigh && (
+      {dataLow &&
+        dataHigh && (
           <svg
             className="difference-chart-svg"
             width="100%"

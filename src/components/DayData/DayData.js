@@ -1,10 +1,24 @@
+// @flow
+
 import React from "react";
 import "./DayData.css";
 
 import Divider from "../UI/Divider/Divider";
 import Heading from "../UI/Heading/Heading";
 
-const DayData = ({ data }) => {
+type Props = {
+  data: {
+    HIGH24HOUR: string,
+    LOW24HOUR: string,
+    PRICE: string,
+    OPEN24HOUR: string,
+    TOTALVOLUME24H: string,
+    CHANGE24HOUR: number
+  }
+};
+
+const DayData = (props: Props) => {
+  const { data } = props;
   console.log(data);
   const {
     HIGH24HOUR: high,
