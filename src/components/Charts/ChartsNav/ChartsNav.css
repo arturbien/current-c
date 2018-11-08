@@ -12,7 +12,8 @@
 .Charts-nav__button {
   font-size: 0.8em;
   flex: 1;
-  color: #6a7485;
+  color: #3a414c;
+  cursor: pointer;
 }
 
 .Charts-nav__button--active {

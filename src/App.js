@@ -9,6 +9,7 @@ import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Spinner from "./components/UI/Spinner/Spinner";
 import CoinDetails from "./containers/CoinDetails/CoinDetails";
+import News from "./containers/News/News";
 import axios from "./axios";
 
 const config = {
@@ -62,7 +63,7 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route exact path="/" component={MainNav} />
-              <Route exact path="/blog" component={MainNav} />
+              <Route exact path="/news" component={MainNav} />
               <Route
                 path="/coin/:id"
                 render={props => (
@@ -91,6 +92,7 @@ class App extends Component {
                   exact
                   component={() => <h1>Settings</h1>}
                 />
+                <Route path="/news" exact component={() => <News />} />
               </>
             )}
           </Layout>

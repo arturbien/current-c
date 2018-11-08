@@ -26,7 +26,7 @@ const Coins = (props: Props) => {
     const coin = props.coins[c];
     return (
       <li key={coin.id}>
-        <Link exact to={`/coin/${coin.id}`}>
+        <Link to={`/coin/${coin.id}`}>
           <Coin
             name={coin.name}
             symbol={coin.symbol}

@@ -11,7 +11,7 @@ const Menu = () => (
       </NavLink>
     </li>
     <li>
-      <NavLink to="/blog">Blog</NavLink>
+      <NavLink to="/news">News</NavLink>
     </li>
   </ul>
 );
