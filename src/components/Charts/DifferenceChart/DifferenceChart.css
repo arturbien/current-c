@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: calc(40vh - 64px);
+  height: calc(100% - 40px);
   transform: scaleY(-1);
   z-index: -1;
 }

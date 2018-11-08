@@ -1,7 +1,8 @@
 .DayData {
   width: 100%;
   /* padding: 20px 0; */
-  height: 50%;
+  height: 200px;
+  min-height: 200px;
   bottom: 0;
 
   position: absolute;
@@ -37,4 +38,8 @@
   color: #6a7485;
   font-weight: bold;
   margin-bottom: 4px;
+}
+
+.DayData .Heading {
+  margin-bottom: 0;
 }
