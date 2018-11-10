@@ -49,9 +49,9 @@ class CoinDetails extends React.Component<Props, State> {
   state = {
     data: null,
     activeCharts: {
-      LOW: true,
-      HIGH: true,
-      TP: true,
+      LOW: false,
+      HIGH: false,
+      TP: false,
       DIFF: true
     },
     loading: true
@@ -97,6 +97,7 @@ class CoinDetails extends React.Component<Props, State> {
                 data={this.state.data}
               />
             )}
+
             <DayData data={this.props.coins[this.props.match.params.id].data} />
           </Container>
         </main>

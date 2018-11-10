@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./DifferenceChart.css";
+import { Spring } from "react-spring";
 
 function hexToRGB(hex: string, alpha: number): string {
   const hexArray = hex.split("");
@@ -74,20 +75,29 @@ const DifferenceChart = (props: Props) => {
   };
 
   return (
-    <figure className="difference-chart">
-      {dataLow &&
-        dataHigh && (
-          <svg
-            className="difference-chart-svg"
-            width="100%"
-            height="100%"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            {getChartDefinition()}
-          </svg>
-        )}
-    </figure>
+    <Spring
+      from={{ transform: "rotateX(90deg)", opacity: 0 }}
+      to={{ transform: "rotateX(180deg)", opacity: 1 }}
+    >
+      {props => (
+        <figure
+          style={{ transform: props.transform, opacity: props.opacity }}
+          className="difference-chart"
+        >
+          {dataLow && dataHigh && (
+            <svg
+              className="difference-chart-svg"
+              width="100%"
+              height="100%"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              {getChartDefinition()}
+            </svg>
+          )}
+        </figure>
+      )}
+    </Spring>
   );
 };
 

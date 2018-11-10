@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./ChartsNav.css";
+import Tap from "react-interactions";
 
 type Props = {
   activeCharts: {
@@ -26,6 +27,7 @@ const ChartsNav = (props: Props) => {
       onClick={() => toggleChart(type)}
     >
       {type}
+      <Tap fade waves light />
     </button>
   ));
   return <nav className="Charts-nav">{btns}</nav>;

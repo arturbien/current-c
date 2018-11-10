@@ -6,6 +6,8 @@ import "./DayData.css";
 import Divider from "../UI/Divider/Divider";
 import Heading from "../UI/Heading/Heading";
 
+import { Spring } from "react-spring";
+
 type Props = {
   data: {
     HIGH24HOUR: string,
@@ -33,6 +35,9 @@ const DayData = (props: Props) => {
       <section className="DayData">
         <div className="DayData-container">
           <Heading>{price}</Heading>
+          {/* <Spring from={{ number: 6378.56 / 1.2 }} to={{ number: 6378.56 }}>
+            {props => <Heading>{props.number.toFixed(2)}</Heading>}
+          </Spring> */}
           <Divider />
           <div className="DayData-data">
             <div className="DayData-item">

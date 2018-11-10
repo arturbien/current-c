@@ -1,6 +1,7 @@
 .BackButton {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .BackButton__text {

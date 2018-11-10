@@ -2,7 +2,6 @@
 
 import React from "react";
 import "./Coin.css";
-
 type Props = {
   name: string,
   symbol: string,

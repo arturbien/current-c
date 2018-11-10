@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
+import "react-interactions/dist/main.css";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import MainNav from "./components/Navigation/MainNav/MainNav";
 import CoinNav from "./components/Navigation/CoinNav/CoinNav";
+import SettingsNav from "./components/Navigation/SettingsNav/SettingsNav";
 
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Settings from "./components/Settings/Settings";
 import Spinner from "./components/UI/Spinner/Spinner";
+import PullSpinner from "./components/UI/PullSpinner/PullSpinner";
 import CoinDetails from "./containers/CoinDetails/CoinDetails";
 import News from "./containers/News/News";
 import axios from "./axios";
@@ -60,16 +65,17 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          <PullSpinner />
           <Layout>
             <Switch>
-              <Route exact path="/" component={MainNav} />
-              <Route exact path="/news" component={MainNav} />
+              <Route exact path="/settings" component={SettingsNav} />
               <Route
                 path="/coin/:id"
                 render={props => (
                   <CoinNav {...props} coins={this.state.coins} />
                 )}
               />
+              <Route path="/" component={MainNav} />
             </Switch>
             {this.state.loading ? (
               <Spinner />
@@ -87,11 +93,7 @@ class App extends Component {
                     <CoinDetails {...props} coins={this.state.coins} />
                   )}
                 />
-                <Route
-                  path="/settings"
-                  exact
-                  component={() => <h1>Settings</h1>}
-                />
+                <Route path="/settings" exact component={() => <Settings />} />
                 <Route path="/news" exact component={() => <News />} />
               </>
             )}

@@ -28,7 +28,7 @@ const CoinNav = (props: Props) => {
   const coinName = props.coins ? props.coins[props.match.params.id].name : null;
   return (
     <NavBar>
-      <BackButton to="/">{coinName}</BackButton>
+      <BackButton goBack={props.history.goBack}>{coinName}</BackButton>
     </NavBar>
   );
 };
