@@ -30,14 +30,18 @@ const DayData = (props: Props) => {
     TOTALVOLUME24H: volume,
     CHANGE24HOUR: change
   } = data;
+  let currency = price.split(" ")[0];
+  let num = parseFloat(price.replace(/,/g, "").slice(2));
   return (
     <>
       <section className="DayData">
         <div className="DayData-container">
-          <Heading>{price}</Heading>
-          {/* <Spring from={{ number: 6378.56 / 1.2 }} to={{ number: 6378.56 }}>
-            {props => <Heading>{props.number.toFixed(2)}</Heading>}
-          </Spring> */}
+          {/* <Heading>{price}</Heading> */}
+          <Spring from={{ number: 0.9 * num }} to={{ number: num }}>
+            {props => (
+              <Heading>{currency + " " + props.number.toFixed(2)}</Heading>
+            )}
+          </Spring>
           <Divider />
           <div className="DayData-data">
             <div className="DayData-item">

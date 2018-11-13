@@ -25,6 +25,8 @@ const config = {
 class App extends Component {
   state = {
     coins: null,
+    news: null,
+    read: [],
     loading: true
   };
   componentDidMount() {
@@ -59,9 +61,32 @@ class App extends Component {
       this.setState({ loading: false });
     }
   };
-  render() {
-    console.log(this.state);
 
+  fetchNews = async (sortOrder = "latest") => {
+    this.setState({ loading: true });
+
+    try {
+      let news = await axios.get(
+        `/data/v2/news/?lang=EN&sortOrder${sortOrder}&categories=ETH`
+      );
+      news = news.data.Data;
+      news.forEach(n => {
+        n.read = false;
+      });
+
+      this.setState({ news: news.slice(0, 10), loading: false });
+    } catch (err) {
+      console.log("ERROR: ", err);
+      this.setState({ loading: false });
+    }
+  };
+
+  markAsRead = id => {
+    this.setState(prevState => ({
+      read: [...prevState.read, id]
+    }));
+  };
+  render() {
     return (
       <BrowserRouter>
         <div className="App">
@@ -94,7 +119,18 @@ class App extends Component {
                   )}
                 />
                 <Route path="/settings" exact component={() => <Settings />} />
-                <Route path="/news" exact component={() => <News />} />
+                <Route
+                  path="/news"
+                  exact
+                  component={() => (
+                    <News
+                      news={this.state.news}
+                      read={this.state.read}
+                      fetch={this.fetchNews}
+                      markAsRead={this.markAsRead}
+                    />
+                  )}
+                />
               </>
             )}
           </Layout>
