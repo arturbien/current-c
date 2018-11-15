@@ -36,6 +36,8 @@ class App extends Component {
   }
 
   fetchCoinsList = async coinsArr => {
+    this.setState({ loading: true });
+
     try {
       console.log(coinsArr);
 
@@ -109,7 +111,7 @@ class App extends Component {
               />
               <Route path="/" component={MainNav} />
             </Switch>
-            {1 == 1 ? (
+            {this.state.loading ? (
               <Spinner />
             ) : (
               <>

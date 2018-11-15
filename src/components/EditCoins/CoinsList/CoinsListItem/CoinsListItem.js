@@ -35,12 +35,12 @@ const CoinsListItem = props => {
     s.toLowerCase() === marked.toLowerCase() ? <mark>{s}</mark> : s
   );
   return (
-    <div className="Coin" onClick={props.onClick}>
-      <div className="Coin__symbol">
+    <div className="CoinsListItem" onClick={props.onClick}>
+      <div className="CoinsListItem__symbol">
         <i>{symbol}</i>
       </div>
-      <div className="Coin__name">{name}</div>
-      <div className="Coin-stats" />
+      <div className="CoinsListItem__name">{name}</div>
+      <div className="CoinsListItem-stats" />
     </div>
   );
 };

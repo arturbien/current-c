@@ -46,6 +46,7 @@ class EditCoins extends Component {
           <SearchBar
             onChange={this.handleInputChange}
             value={this.state.searchValue}
+            placeholder={"Search for coin..."}
           />
 
           <CoinsList

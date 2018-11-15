@@ -25,3 +25,8 @@
   text-align: center;
   line-height: 34px;
 }
+
+.SearchBar__input::placeholder {
+  font-size: 1em;
+  color: #6a7485;
+}

@@ -29,7 +29,7 @@ const CoinsList = props => {
   });
 
   return (
-    <ul className="Coins">
+    <ul className="CoinsList">
       <Trail
         items={coins}
         keys={item => item.key}
