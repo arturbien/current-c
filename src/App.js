@@ -10,6 +10,7 @@ import SettingsNav from "./components/Navigation/SettingsNav/SettingsNav";
 
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
+import EditCoins from "./components/EditCoins/EditCoins";
 import Settings from "./components/Settings/Settings";
 import Spinner from "./components/UI/Spinner/Spinner";
 import PullSpinner from "./components/UI/PullSpinner/PullSpinner";
@@ -25,6 +26,7 @@ const config = {
 class App extends Component {
   state = {
     coins: null,
+    coinsList: null,
     news: null,
     read: [],
     loading: true
@@ -33,29 +35,34 @@ class App extends Component {
     this.fetchCoinsList();
   }
 
-  fetchCoinsList = async () => {
+  fetchCoinsList = async coinsArr => {
     try {
+      console.log(coinsArr);
+
       let coinsList = await axios.get("/data/all/coinlist");
       coinsList = coinsList.data.Data;
 
-      const topCoins = Object.keys(coinsList)
-        .sort((a, b) => coinsList[a].SortOrder - coinsList[b].SortOrder)
-        .splice(0, config.coins.max);
+      const addedCoins =
+        coinsArr ||
+        Object.keys(coinsList)
+          .sort((a, b) => coinsList[a].SortOrder - coinsList[b].SortOrder)
+          .splice(0, config.coins.max);
 
       let coinsPrices = await axios.get(
-        `/data/pricemultifull?fsyms=${topCoins.join(",")}&tsyms=USD`
+        `/data/pricemultifull?fsyms=${addedCoins.join(",")}&tsyms=USD`
       );
       coinsPrices = coinsPrices.data;
 
       let coins = {};
-      topCoins.forEach(coin => {
+      addedCoins.forEach(coin => {
         coins[coin] = {};
         coins[coin].name = coinsList[coin].CoinName;
         coins[coin].symbol = coinsPrices.DISPLAY[coin].USD.FROMSYMBOL;
         coins[coin].data = coinsPrices.DISPLAY[coin].USD;
         coins[coin].id = coin;
       });
-      this.setState({ coins, loading: false });
+
+      this.setState({ coins, coinsList, loading: false });
     } catch (err) {
       console.log("ERROR: ", err);
       this.setState({ loading: false });
@@ -102,7 +109,7 @@ class App extends Component {
               />
               <Route path="/" component={MainNav} />
             </Switch>
-            {this.state.loading ? (
+            {1 == 1 ? (
               <Spinner />
             ) : (
               <>
@@ -119,6 +126,17 @@ class App extends Component {
                   )}
                 />
                 <Route path="/settings" exact component={() => <Settings />} />
+                <Route
+                  path="/edit"
+                  exact
+                  render={() => (
+                    <EditCoins
+                      coins={this.state.coins}
+                      coinsList={this.state.coinsList}
+                      fetchCoinsList={this.fetchCoinsList}
+                    />
+                  )}
+                />
                 <Route
                   path="/news"
                   exact

@@ -3,9 +3,7 @@ import "./News.css";
 
 import Container from "../../hoc/container/container";
 import Heading from "../../components/UI/Heading/Heading";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import NewsList from "../../components/NewsList/NewsList";
-import axios from "../../axios";
 
 const News = props => {
   if (!props.news) {

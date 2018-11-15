@@ -18,7 +18,7 @@ type Props = {
       id: string,
       data: {
         PRICE: string,
-        CHANGEPCTDAY: number
+        CHANGEPCT24HOUR: number
       }
     }
   }
@@ -34,7 +34,7 @@ const Coins = (props: Props) => {
             name={coin.name}
             symbol={coin.symbol}
             price={coin.data.PRICE}
-            change={coin.data.CHANGEPCTDAY}
+            change={coin.data.CHANGEPCT24HOUR}
           />
         </Link>
         <Divider />

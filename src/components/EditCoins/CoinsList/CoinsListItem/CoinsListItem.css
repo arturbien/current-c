@@ -1,0 +1,34 @@
+.Coin {
+  display: flex;
+  height: 54px;
+  width: 100%;
+  align-items: center;
+}
+.Coin__symbol {
+  width: 50px;
+  margin-right: 40px;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.Coin__name {
+  color: #6a7485;
+}
+.Coin-stats {
+  display: flex;
+  flex-flow: column;
+  margin-left: auto;
+  text-align: right;
+  justify-content: space-between;
+}
+.Coin-stats__price,
+.Coin-stats__change {
+  width: 100%;
+  height: 50%;
+}
+.Coin-stats__change {
+  color: #5cab7d;
+}
+.Coin-stats__change--drop {
+  color: #ed254e;
+}
