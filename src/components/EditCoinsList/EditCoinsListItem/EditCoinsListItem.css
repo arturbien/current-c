@@ -1,27 +1,27 @@
-.CoinsListItem {
+.EditCoinsListItem {
   display: flex;
   height: 54px;
   width: 100%;
   align-items: center;
   cursor: pointer;
 }
-.CoinsListItem__symbol {
+.EditCoinsListItem__symbol {
   width: 50px;
   margin-right: 40px;
   text-align: center;
   font-size: 0.8em;
 }
 
-.CoinsListItem__name {
+.EditCoinsListItem__name {
   color: #6a7485;
 }
 
-.CoinsListItem__button {
-  margin-bottom: -7px;
+.EditCoinsListItem__button {
+  margin-bottom: -2px;
   margin-left: auto;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
-.CoinsListItem__mark {
+.EditCoinsListItem__mark {
   background: #00a6fb;
 }

@@ -1,10 +1,10 @@
 // @flow
 
 import React from "react";
-import "./CoinsListItem.css";
+import "./EditCoinsListItem.css";
 
-import DeleteButton from "../../../UI/DeleteButton/DeleteButton";
-import AddButton from "../../../UI/AddButton/AddButton";
+import DeleteButton from "../../UI/DeleteButton/DeleteButton";
+import AddButton from "../../UI/AddButton/AddButton";
 
 function occurenceIndexes(source, find) {
   var result = [];
@@ -30,24 +30,24 @@ function splitByIndex(str, word, indexes) {
   }
   return arr;
 }
-const CoinsListItem = props => {
+const EditCoinsListItem = props => {
   let { name, symbol, marked, active } = props;
 
   let indexes = occurenceIndexes(name, marked);
   name = splitByIndex(name, marked, indexes).map(s =>
     s.toLowerCase() === marked.toLowerCase() ? (
-      <mark className="CoinsListItem__mark">{s}</mark>
+      <mark className="EditCoinsListItem__mark">{s}</mark>
     ) : (
       s
     )
   );
   return (
-    <div className="CoinsListItem">
-      <div className="CoinsListItem__symbol">
+    <div className="EditCoinsListItem">
+      <div className="EditCoinsListItem__symbol">
         <i>{symbol}</i>
       </div>
-      <div className="CoinsListItem__name">{name}</div>
-      <div className="CoinsListItem__button">
+      <div className="EditCoinsListItem__name">{name}</div>
+      <div className="EditCoinsListItem__button">
         {active ? (
           <DeleteButton onClick={props.onClick} />
         ) : (
@@ -58,4 +58,4 @@ const CoinsListItem = props => {
   );
 };
 
-export default CoinsListItem;
+export default EditCoinsListItem;

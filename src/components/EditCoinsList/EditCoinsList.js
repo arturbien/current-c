@@ -1,20 +1,20 @@
 import React from "react";
-import "./CoinsList.css";
+import "./EditCoinsList.css";
 
-import CoinsListItem from "./CoinsListItem/CoinsListItem";
-import Divider from "../../UI/Divider/Divider";
+import EditCoinsListItem from "./EditCoinsListItem/EditCoinsListItem";
+import Divider from "../UI/Divider/Divider";
 
 // $FlowFixMe
 import { Trail, Spring } from "react-spring";
 
-const CoinsList = props => {
+const EditCoinsList = props => {
   let { coins, currentCoins, marked, fetchCoinsList } = props;
 
   coins = Object.keys(coins).map((c, i) => {
     const active = currentCoins.includes(c);
     return (
       <li key={i}>
-        <CoinsListItem
+        <EditCoinsListItem
           name={coins[c].FullName}
           symbol={coins[c].Symbol}
           marked={marked}
@@ -34,7 +34,7 @@ const CoinsList = props => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
       {props => (
-        <ul className="CoinsList" style={props}>
+        <ul className="EditCoinsList" style={props}>
           {/* <Trail
         items={coins}
         keys={item => item.key}
@@ -50,4 +50,4 @@ const CoinsList = props => {
   );
 };
 
-export default CoinsList;
+export default EditCoinsList;

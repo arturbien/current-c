@@ -21,7 +21,6 @@ type Props = {
 
 const DayData = (props: Props) => {
   const { data } = props;
-  console.log(data);
   const {
     HIGH24HOUR: high,
     LOW24HOUR: low,

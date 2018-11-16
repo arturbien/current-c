@@ -6,7 +6,7 @@ import "./EditCoins.css";
 import Container from "../../hoc/container/container";
 import Heading from "../../components/UI/Heading/Heading";
 import SearchBar from "../../components/UI/SearchBar/SearchBar";
-import CoinsList from "./CoinsList/CoinsList";
+import EditCoinsList from "../../components/EditCoinsList/EditCoinsList";
 
 class EditCoins extends Component {
   state = {
@@ -47,7 +47,7 @@ class EditCoins extends Component {
             placeholder={"Search for coin..."}
           />
 
-          <CoinsList
+          <EditCoinsList
             coins={coins}
             marked={this.state.searchValue}
             fetchCoinsList={this.props.fetchCoinsList}

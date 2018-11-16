@@ -51,7 +51,7 @@ class CoinDetails extends React.Component<Props, State> {
     activeCharts: {
       LOW: false,
       HIGH: false,
-      TP: false,
+      TP: true,
       DIFF: true
     },
     loading: true

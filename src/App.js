@@ -10,11 +10,11 @@ import GoBackNav from "./components/Navigation/GoBackNav/GoBackNav";
 
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
-import EditCoins from "./components/EditCoins/EditCoins";
 import Settings from "./components/Settings/Settings";
 import Spinner from "./components/UI/Spinner/Spinner";
 import PullSpinner from "./components/UI/PullSpinner/PullSpinner";
 import CoinDetails from "./containers/CoinDetails/CoinDetails";
+import EditCoins from "./containers/EditCoins/EditCoins";
 import News from "./containers/News/News";
 import axios from "./axios";
 
@@ -54,10 +54,11 @@ class App extends Component {
       coinsPrices = coinsPrices.data;
 
       let coins = {};
+
       addedCoins.forEach(coin => {
         coins[coin] = {};
         coins[coin].name = coinsList[coin].CoinName;
-        coins[coin].symbol = coinsPrices.DISPLAY[coin].USD.FROMSYMBOL;
+        coins[coin].symbol = coin;
         coins[coin].data = coinsPrices.DISPLAY[coin].USD;
         coins[coin].id = coin;
       });
