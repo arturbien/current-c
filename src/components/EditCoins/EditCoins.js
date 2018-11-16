@@ -17,7 +17,6 @@ class EditCoins extends Component {
   };
   render() {
     let currentCoins = Object.keys(this.props.coins);
-    console.log(currentCoins);
     let coins = {};
     if (this.state.searchValue) {
       let counter = 0;
@@ -39,7 +38,6 @@ class EditCoins extends Component {
         coins[coin] = this.props.coinsList[coin];
       }
     }
-    console.log(coins);
     return (
       <main className="EditCoins">
         <Container>

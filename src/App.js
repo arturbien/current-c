@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import MainNav from "./components/Navigation/MainNav/MainNav";
 import CoinNav from "./components/Navigation/CoinNav/CoinNav";
-import SettingsNav from "./components/Navigation/SettingsNav/SettingsNav";
+import GoBackNav from "./components/Navigation/GoBackNav/GoBackNav";
 
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -20,7 +20,7 @@ import axios from "./axios";
 
 const config = {
   coins: {
-    max: 10
+    max: 3
   }
 };
 class App extends Component {
@@ -39,8 +39,6 @@ class App extends Component {
     this.setState({ loading: true });
 
     try {
-      console.log(coinsArr);
-
       let coinsList = await axios.get("/data/all/coinlist");
       coinsList = coinsList.data.Data;
 
@@ -102,7 +100,8 @@ class App extends Component {
           <PullSpinner />
           <Layout>
             <Switch>
-              <Route exact path="/settings" component={SettingsNav} />
+              <Route exact path="/settings" component={GoBackNav} />
+              <Route exact path="/edit" component={GoBackNav} />
               <Route
                 path="/coin/:id"
                 render={props => (

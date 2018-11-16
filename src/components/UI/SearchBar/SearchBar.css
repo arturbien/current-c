@@ -2,8 +2,7 @@
   display: flex;
   border: 1px solid #3a414c;
   border-radius: 3px;
-  padding: 10px 0;
-  margin-bottom: 12px;
+  padding: 7px 0;
 }
 .SearchBar__input {
   background: none;

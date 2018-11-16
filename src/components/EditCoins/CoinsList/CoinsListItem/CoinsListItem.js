@@ -3,6 +3,9 @@
 import React from "react";
 import "./CoinsListItem.css";
 
+import DeleteButton from "../../../UI/DeleteButton/DeleteButton";
+import AddButton from "../../../UI/AddButton/AddButton";
+
 function occurenceIndexes(source, find) {
   var result = [];
   for (let i = 0; i < source.length; ++i) {
@@ -28,19 +31,29 @@ function splitByIndex(str, word, indexes) {
   return arr;
 }
 const CoinsListItem = props => {
-  let { name, symbol, marked } = props;
+  let { name, symbol, marked, active } = props;
 
   let indexes = occurenceIndexes(name, marked);
   name = splitByIndex(name, marked, indexes).map(s =>
-    s.toLowerCase() === marked.toLowerCase() ? <mark>{s}</mark> : s
+    s.toLowerCase() === marked.toLowerCase() ? (
+      <mark className="CoinsListItem__mark">{s}</mark>
+    ) : (
+      s
+    )
   );
   return (
-    <div className="CoinsListItem" onClick={props.onClick}>
+    <div className="CoinsListItem">
       <div className="CoinsListItem__symbol">
         <i>{symbol}</i>
       </div>
       <div className="CoinsListItem__name">{name}</div>
-      <div className="CoinsListItem-stats" />
+      <div className="CoinsListItem__button">
+        {active ? (
+          <DeleteButton onClick={props.onClick} />
+        ) : (
+          <AddButton onClick={props.onClick} />
+        )}
+      </div>
     </div>
   );
 };

@@ -5,8 +5,7 @@ import React from "react";
 import NavBar from "../../UI/NavBar/NavBar";
 import BackButton from "../../UI/BackButton/BackButton";
 
-const SettingsNav = props => {
-  console.log(props.history);
+const GoBackNav = props => {
   return (
     <NavBar>
       <BackButton goBack={props.history.goBack} />
@@ -14,4 +13,4 @@ const SettingsNav = props => {
   );
 };
 
-export default SettingsNav;
+export default GoBackNav;

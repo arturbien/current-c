@@ -15,3 +15,13 @@
 .CoinsListItem__name {
   color: #6a7485;
 }
+
+.CoinsListItem__button {
+  margin-bottom: -7px;
+  margin-left: auto;
+  padding-right: 10px;
+}
+
+.CoinsListItem__mark {
+  background: #00a6fb;
+}

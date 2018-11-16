@@ -17,7 +17,7 @@ const SearchBar = props => (
           fill="none"
           id="XMLID_42_"
           r="9"
-          stroke="#ffffff"
+          stroke="#6a7485"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeMiterlimit="10"
@@ -26,7 +26,7 @@ const SearchBar = props => (
         <line
           fill="none"
           id="XMLID_44_"
-          stroke="#ffffff"
+          stroke="#6a7485"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeMiterlimit="10"
