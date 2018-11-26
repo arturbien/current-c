@@ -34,9 +34,11 @@ const EditCoinsListItem = props => {
   let { name, symbol, marked, active } = props;
 
   let indexes = occurenceIndexes(name, marked);
-  name = splitByIndex(name, marked, indexes).map(s =>
+  name = splitByIndex(name, marked, indexes).map((s, i) =>
     s.toLowerCase() === marked.toLowerCase() ? (
-      <mark className="EditCoinsListItem__mark">{s}</mark>
+      <mark className="EditCoinsListItem__mark" key={i}>
+        {s}
+      </mark>
     ) : (
       s
     )

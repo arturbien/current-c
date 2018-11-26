@@ -5,7 +5,8 @@ import EditCoinsListItem from "./EditCoinsListItem/EditCoinsListItem";
 import Divider from "../UI/Divider/Divider";
 
 // $FlowFixMe
-import { Trail, Spring } from "react-spring";
+// import { Trail, Spring } from "react-spring";
+import { Spring } from "react-spring";
 
 const EditCoinsList = props => {
   let { coins, currentCoins, marked, fetchCoinsList } = props;

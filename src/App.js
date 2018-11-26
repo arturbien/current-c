@@ -42,12 +42,15 @@ class App extends Component {
       let coinsList = await axios.get("/data/all/coinlist");
       coinsList = coinsList.data.Data;
 
+      const storedCoins = JSON.parse(localStorage.getItem("storedCoins"));
       const addedCoins =
         coinsArr ||
+        storedCoins ||
         Object.keys(coinsList)
           .sort((a, b) => coinsList[a].SortOrder - coinsList[b].SortOrder)
           .splice(0, config.coins.max);
 
+      localStorage.setItem("storedCoins", JSON.stringify(addedCoins));
       let coinsPrices = await axios.get(
         `/data/pricemultifull?fsyms=${addedCoins.join(",")}&tsyms=USD`
       );

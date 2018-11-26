@@ -20,6 +20,7 @@
   color: #6a7485;
   margin-right: 30px;
   display: inline-block;
+  overflow: hidden;
 }
 
 .NewsListItem-img-container {

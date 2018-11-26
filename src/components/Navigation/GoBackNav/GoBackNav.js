@@ -8,7 +8,7 @@ import BackButton from "../../UI/BackButton/BackButton";
 const GoBackNav = props => {
   return (
     <NavBar>
-      <BackButton goBack={props.history.goBack} />
+      <BackButton goBack={props.history.goBack}>{props.children}</BackButton>
     </NavBar>
   );
 };

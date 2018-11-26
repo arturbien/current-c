@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import "./EditCoins.css";
 
 import Container from "../../hoc/container/container";
-import Heading from "../../components/UI/Heading/Heading";
 import SearchBar from "../../components/UI/SearchBar/SearchBar";
 import EditCoinsList from "../../components/EditCoinsList/EditCoinsList";
+import Notification from "../../components/UI/Notification/Notification";
 
 class EditCoins extends Component {
   state = {
@@ -38,21 +38,28 @@ class EditCoins extends Component {
         coins[coin] = this.props.coinsList[coin];
       }
     }
+    console.log(currentCoins);
+
     return (
       <main className="EditCoins">
         <Container>
+          {/* <Heading>Manage coins</Heading> */}
           <SearchBar
             onChange={this.handleInputChange}
             value={this.state.searchValue}
             placeholder={"Search for coin..."}
           />
 
-          <EditCoinsList
-            coins={coins}
-            marked={this.state.searchValue}
-            fetchCoinsList={this.props.fetchCoinsList}
-            currentCoins={currentCoins}
-          />
+          {currentCoins.length || this.state.searchValue ? (
+            <EditCoinsList
+              coins={coins}
+              marked={this.state.searchValue}
+              fetchCoinsList={this.props.fetchCoinsList}
+              currentCoins={currentCoins}
+            />
+          ) : (
+            <Notification>Add some coins!</Notification>
+          )}
         </Container>
       </main>
     );

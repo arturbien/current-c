@@ -7,6 +7,7 @@ import Container from "../../hoc/container/container";
 import Heading from "../../components/UI/Heading/Heading";
 import Coins from "./Coins/Coins";
 import EditButton from "../UI/EditButton/EditButton";
+import Notification from "../UI/Notification/Notification";
 
 import { Link } from "react-router-dom";
 type Props = {
@@ -24,6 +25,7 @@ type Props = {
 };
 
 const Dashboard = (props: Props) => {
+  console.log(props.coins);
   return (
     <main className="Dashboard">
       <Container>
@@ -31,7 +33,13 @@ const Dashboard = (props: Props) => {
           <EditButton />
         </Link>
         <Heading>Dashboard</Heading>
-        <Coins coins={props.coins} />
+        {Object.keys(props.coins).length ? (
+          <Coins coins={props.coins} />
+        ) : (
+          <Notification>
+            <Link to="/edit">Add some coins!</Link>
+          </Notification>
+        )}
       </Container>
     </main>
   );
